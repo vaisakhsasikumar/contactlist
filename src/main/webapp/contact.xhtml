@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <title>Contact list</title>
+</h:head>
+
+<h:body style="max-width: 1000px; margin: 0 auto;background-color: #f5f5f5">
+    <div style="text-align: center;"><h2 style="font-family: 'Public Sans'">Kuhne + Nagel Table</h2></div>
+    <div class="card">
+    <h:form id="contactForm">
+        <p:dataTable
+                id="contactDataTable"
+                paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                value="#{contactBean.contacts}"
+                var="contact"
+                paginator="true"
+                rows="10"
+                lazy="true"
+                filterDelay="1000"
+                allowUnsorting="true"
+                sortMode="single">
+            <p:column headerText="ID">
+                <p:outputLabel value="#{contact.id}"/>
+            </p:column>
+            <p:column headerText="Name" sortOrder="asc" filterBy="#{contact.name}">
+                <p:outputLabel value="#{contact.name}"/>
+            </p:column>
+            <p:column headerText="Profile Picture">
+                <p:graphicImage value="#{contact.imageUrl}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+    </div>
+</h:body>
+
+</html>
